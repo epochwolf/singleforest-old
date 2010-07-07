@@ -1,3 +1,6 @@
+== Running this project
+You're welcome to try it. The recaptha keys have been removed so I don't know if it will be too happy about that. 
+
 == Version One
 This is the version of singleforest.com that appears in the screenshots named "VersionOne". I'm no long developing this copy. The version I am working on as of July 7, 2010 is called "SF".
 
@@ -7,6 +10,8 @@ VersionOne was built to eventually use MySQL or Postgres in production. SF uses 
 
 == Design problems in this version
 The way comments are stored is a massive headache. The `CommentThread` model was meant speed up retrieving comments from the database by only requiring a single lookup on an integer field on the `Comments` model instead of a string field and integer field. The current model for comments in SF uses a polymorphic field instead. The `CommentThread` model has layers of attribute caching for things like "is the parent locked?" which is difficult to manage. 
+
+The registration and login pages are handled in the same controller. This makes the SessionController too large to easily understand.
 
 There is too much abstraction and not enough design in the interface at the moment. The placement of controls and links were never planned out. The `control_box` helper method ended up becoming used for every list of links that might be needed on a page. Most of the interface is prototyped at best. 
 
