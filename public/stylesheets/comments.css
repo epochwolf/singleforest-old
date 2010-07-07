@@ -1,0 +1,47 @@
+.comment-thread {
+  margin: auto;
+  width: 50em;
+  margin-bottom: 2em; }
+
+.comments {
+  margin: auto;
+  width: 50em; }
+  .comments .comment-form {
+    width: 30em;
+    margin: auto; }
+    .comments .comment-form textarea {
+      width: 100%;
+      display: block; }
+  .comments .comment {
+    width: 36em;
+    padding: 3px;
+    margin: 2em 0; }
+    .comments .comment .comment-header {
+      color: #555; }
+      .comments .comment .comment-header a {
+        color: #555; }
+    .comments .comment .comment-subheader {
+      font-style: italic; }
+    .comments .comment .rich {
+      padding: 0 0.3em;
+      color: #000; }
+    .comments .comment .deleted {
+      color: #222; }
+    .comments .comment .reply {
+      margin-left: .3em; }
+      .comments .comment .reply a {
+        color: #000; }
+  .comments .comments-continue a {
+    color: #444; }
+  .comments .comment.level-0 {
+    margin-left: 0em; }
+  .comments .comment.level-1 {
+    margin-left: 3em; }
+  .comments .comment.level-2 {
+    margin-left: 6em; }
+  .comments .comment.level-3 {
+    margin-left: 9em; }
+  .comments .comment.level-4 {
+    margin-left: 12em; }
+  .comments .comment.level-5 {
+    margin-left: 15em; }

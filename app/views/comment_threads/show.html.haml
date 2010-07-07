@@ -1,0 +1,13 @@
+-title "Comments"
+
+.comment-thread
+  -case @commentable.class.name
+  -when "Literature"
+    %h1 Comments on Literature: #{link_to h(@commentable.title), @commentable}
+    -nav "Literature"
+  -when "ForumThread"
+    %h1 Comments on Forum Thread: #{link_to h(@commentable.title), [@commentable.category, @commentable]}
+  -else
+    %h1 Comments on ???
+  
+=render :partial => "comments/comments_for", :locals => {:comment_thread => @thread}

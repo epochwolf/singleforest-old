@@ -1,0 +1,50 @@
+/* http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html */
+
+body
+  font-family: Times, "Times New Roman", serif
+  font-size: 14px
+  font-style: normal
+
+#site-content
+  margin: 0.8em 1em
+  padding: 0.4em
+
+.readable
+  width: 35em
+  margin: auto  
+
+p
+  padding: 0.3em 0
+
+.contain
+  overflow: hidden
+
+.right
+  float: right
+  
+.left
+  float: left
+
+.center
+  text-align: center
+  
+a.current_page
+  text-decoration: none
+
+//base
+@import page_header.sass
+@import page_footer.sass
+@import headings.sass
+@import tables.sass
+
+//specific
+@import forums.sass
+@import forms.sass
+@import article.sass
+@import comments.sass
+@import rich.sass
+@import users.sass
+@import popups.sass
+
+//theme
+@import colors.sass

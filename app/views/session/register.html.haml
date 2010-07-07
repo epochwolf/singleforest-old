@@ -1,0 +1,14 @@
+- title "Register"
+%h1.title Register
+.rich
+  %p Looking for a sign up form? Read the next paragraph carefully.
+  %p 
+    Registration is a two step process. 
+    %ol
+      %li First we ask you to choose an login provider (like Google or LiveJournal) 
+      %li Then we'll ask you to choose a username.
+  %p 
+    You don't need a password here because we ask your login provider if you are signed in with them. 
+    This process is secure, we can only ask if you are logged in with your provider. 
+    We can't ask for your password. Well, we could ask for it but they wouldn't give it to us. 
+  %p=link_to "Get Started", login_url(:register => "new")

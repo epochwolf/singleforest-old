@@ -1,0 +1,15 @@
+- title "#{h @user.name} - Collections "
+=render :partial => "user_pages/nav", :locals =>{:page => "Collections", }
+
+%table.default
+  %tr
+    %th Title
+    %th Series?
+    %th Literature
+
+  - for collection in @collections
+    %tr
+      %td= link_to h(collection.title), [@user, collection]
+      %td=b collection.series
+      %td= collection.literatures_count
+      %td= collection.scratchpads_count

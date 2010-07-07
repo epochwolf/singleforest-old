@@ -1,0 +1,73 @@
+- title "Literature - #{h(@literature.title)}"
+-nav "Literature"
+-if @literature.part_of_series?
+  .next-in-series
+    / TODO: Fill in later
+
+-unless @literature.collection_id.nil?
+  .collection{:class => (@literature.collection.series? ? "series" : "")}
+    %h3.heading=link_to h(@literature.collection.title), [@literature.user,@literature.collection]
+    %ul.collection_listing
+      -for literature in @literature.collection.literatures
+        -unless literature == @literature
+          %li=link_to h(literature.title), literature
+        -else
+          %li.active=h literature.title
+.article
+  .header.centered
+    .top
+      %span.literature_user=user_link @literature
+      %span.literature_created_at=dt @literature.created_at
+    %h1=h @literature.title
+    .bottom
+      %span.literature_word_count=@literature.word_count
+      %span.literature_tags=tag_links(@literature.tags)
+  -if @literature.deleted_at
+    .center
+      This submission was deleted #{dt @literature.deleted_at}
+  -unless @literature.artists_note.blank?
+    .details
+      .details_label Artist's Note:
+      .rich=rich(@literature.artists_note)
+
+  .center
+    -if @literature.mature?
+      :ruby
+        s = @literature.mature_sex?
+        v = @literature.mature_violence?
+      %p
+        -if s && v
+          This submission is mature for sex and violence! (enjoy)
+        -elsif s
+          This submission is mature for sex.
+        -elsif v
+          This submission is mature for violence.
+        -else
+          This submission is mature.
+  .contents
+    .top
+      -if rank?(:moderator, :user => current_user)
+        =link_to "edit", edit_literature_path(@literature)
+        |
+      -if current_user
+        =link_to "flag", url_for
+    .rich=rich(@literature.contents)
+    .bottom
+  .footer
+    -if current_user && !(current_user.id == @literature.user_id)
+      Did you like this story?
+      -remote_form_for @vote, :url => vote_literature_path(@literature) do |f|
+        =f.radio_button :vote, 1
+        =f.label :vote_1, vote_text(1)
+        =f.radio_button :vote, -1  
+        =f.label :"vote_-1", vote_text(-1)
+        =f.radio_button :vote, 0
+        =f.label :vote_0, vote_text(0)
+        %div#vote_status
+      =observe_form("edit_literature_vote_#{@vote.id}", :url => vote_literature_path(@literature), :update => :vote_status, :before => '$("#vote_status").html("saving")' )
+      
+
+    .discussion
+      =link_to "View Comments", @literature.comment_thread
+      (#{@literature.comment_thread.comments.count})
+    

@@ -1,0 +1,23 @@
+- title "Notes"
+
+%table
+  %tr
+    %th To
+    %th From
+    %th Title
+    %th Contents
+    %th Read
+    %th Flagged
+  - for note in @notes
+    %tr
+      %td= h note.to_id
+      %td= h note.from_id
+      %td= h note.title
+      %td= h note.contents
+      %td= h note.read
+      %td= h note.flagged
+      %td= link_to 'Show', note
+      %td= link_to 'Edit', edit_note_path(note)
+      %td= link_to 'Destroy', note, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Note", new_note_path

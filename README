@@ -1,0 +1,23 @@
+== Version One
+This is the version of singleforest.com that appears in the screenshots named "VersionOne". I'm no long developing this copy. The version I am working on as of July 7, 2010 is called "SF".
+
+VersionOne has openid as the only login option. SF uses a traditional username/password because the rack-openid gem or one of it's dependancies does not handle Ruby 1.9 encodings properly.
+
+VersionOne was built to eventually use MySQL or Postgres in production. SF uses MongoDB in both development and production.
+
+== Design problems in this version
+The way comments are stored is a massive headache. The `CommentThread` model was meant speed up retrieving comments from the database by only requiring a single lookup on an integer field on the `Comments` model instead of a string field and integer field. The current model for comments in SF uses a polymorphic field instead. The `CommentThread` model has layers of attribute caching for things like "is the parent locked?" which is difficult to manage. 
+
+There is too much abstraction and not enough design in the interface at the moment. The placement of controls and links were never planned out. The `control_box` helper method ended up becoming used for every list of links that might be needed on a page. Most of the interface is prototyped at best. 
+
+There are navigational dead ends and some pages redirect back to the wrong page. (SF fixes this by allowing explicit redirects from the previous page.)
+
+== Where are the tests?
+Two reasons. 
+
+First, I haven't learned any rails testing. Some time ago I read about rails and unit testing. The only things I saw in the examples I read was testing validations to make sure the validations worked. I could not think of anything more absurd than building tests to test an already tested framework. I know better know. 
+
+Second, it's not really possible to write tests for an non-existent implementation of a website that doesn't have a fixed design.  I would try 5 or 6 implementations before deciding on one, then I would move to the next topic and come back later and change the design. I didn't know what I wanted to build. 
+
+== What now?
+I'm slowly working on SF and being a little more careful with my design so I don't have a massive screw up like this again. 

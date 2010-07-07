@@ -1,0 +1,22 @@
+Literature Model
+================
+
+Title
+User
+Word Count
+Tags 
+
+Artist's Note
+Content
+Summary (displayed on browse listings, perhaps it will be ignored otherwise)
+
+
+Content
+Mature
+Mature for sex
+Mature for violence
+
+StorySeries
+
+
+

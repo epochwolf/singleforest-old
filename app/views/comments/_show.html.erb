@@ -1,0 +1,60 @@
+<% 
+# required: comment, lvl
+comment_thread = comment.comment_thread
+show = [:parent, :reply, :reason]
+show_parent = false if show_parent.nil?
+show_reply = true if show_reply.nil?
+show_reason = false if show_reason.nil?
+%>
+<div class="comment level-<%=lvl %>">
+  <% if comment.deleted_at %>
+  <%# Deleted comment -%>
+    <div class="comment-header">
+      <a id="comment-<%=comment.id%>">[Deleted <%=dt comment.deleted_at %>]</a> / 
+      <span class="link"><%=link_to "reason",  [comment_thread, comment] %></span>
+      <% if show_parent %>  
+        / <span class="link">
+          <%=link_to "parent", (comment.parent_id ? comment_thread_comment_path(comment_thread, comment.parent_id) : comment_thread) %>
+        </span>
+      <% end %>
+      <% if rank? :admin %>
+        / <span class="delete"><%=link_to "undelete",  edit_comment_thread_comment_path(comment_thread, comment, :return_uri => request.request_uri) %></span>
+      <% end %>
+    </div>
+    <% if show_reason %>
+      <div class="comment-subheader">
+        <%=sf comment.admin_note%>
+      </div>
+    <% end %>
+  <% else %>
+  <%# Not Deleted comment %>
+    <div class="comment-header">
+      <a id="comment-<%=comment.id%>">#<%= comment.id %></a> by: 
+      <span class="user"><%= user_link comment %></span>
+      <span class="date"><%=dt comment.created_at%></span> /
+      <span class="link"><%=link_to "link",  [comment_thread, comment] %></span>
+      <% if show_parent %>  
+        / <span class="link">
+          <%=link_to "parent", (comment.parent_id ? comment_thread_comment_path(comment_thread, comment.parent_id) : comment_thread) %>
+        </span>
+      <% end %>
+      <% if rank? :admin %>
+        / <span class="delete">
+          <%=link_to "delete",  edit_comment_thread_comment_path(comment_thread, comment, :return_uri => request.request_uri) %>
+        </span>
+      <% end %>
+    </div>
+    <div class="rich">
+      <%= sf comment.contents%>
+    </div>
+    <div class="reply">
+      <% if show_reply && rank?(:user) %>
+        <span class="link"><%=link_to "reply", new_comment_thread_comment_path(comment_thread, :return_uri => request.request_uri, :parent => comment.id) %></span>
+        /
+      <% end %>
+      <% if rank? :user %>
+        <%=link_to "flag",  [comment_thread, comment] %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

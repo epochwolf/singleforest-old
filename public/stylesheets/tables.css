@@ -1,0 +1,13 @@
+table.default {
+  margin: 0.5em 0; }
+  table.default th {
+    padding: 0 0.5em; }
+  table.default td .literature_series_title {
+    font-style: italic; }
+
+table.default.paged {
+  margin-top: 0.5em;
+  margin-bottom: 0; }
+
+table.default td {
+  padding: 0.3em 0.4em; }

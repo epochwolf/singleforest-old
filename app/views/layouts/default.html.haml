@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+-#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:"http-equiv"=>"content-type", :content=>"text/html;charset=UTF-8"}
+    
+    -#javascript
+    =javascript_include_tag :defaults, "openid-jquery.js", "wmd/jquery.wmd.min.js"
+    
+    -#stylesheets
+    =stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes', 'wmd', 'openid', 'main', :cache => true
+    -# removed: ,'scaffold'
+    :javascript
+      $(document).ready(function() { 
+        $("textarea.rich").each(function(){
+          $(this).wmd();
+        });
+        $(".wmd-preview").each(function(){
+          $(this).addClass("rich");
+        })
+      });
+    
+    
+    %title=@page_title or "Singleforest - #{controller.controller_name.humanize}"
+  %body
+    #outer-wrapper
+      #header
+        %h1 Singleforest.com
+        %p#tag-line
+        .login-info
+          -if current_user(true)
+            Masquerading as:
+            #{link_to h(current_user.name), current_user}
+            (#{link_to "logout", masquerade_url, :method => :delete})
+            .back-to-site=link_to "Account", account_path
+          -elsif current_user
+            Logged in as:
+            #{link_to h(current_user.name), current_user}
+            (#{link_to "logout", logout_url, :method => :delete})
+            .back-to-site=link_to "Account", account_path
+          -else
+            Unstable alpha test (#{link_to "Login", login_url} / #{link_to "Register", register_url})
+      #navigation
+        %ul
+          %li=heading_link "Home", root_url
+          %li=heading_link "Literature", literatures_url
+          %li=heading_link "Tags", tags_url
+          %li=heading_link "Forums", forum_categories_url
+          %li=heading_link "Pages", pages_url
+          %li=heading_link "Users", users_url
+      #flash-alerts    
+        -if flash[:alert]
+          .error /!\ #{flash[:alert]} /!\
+        -elsif flash[:notice]
+          .notice=flash[:notice]
+      #site-content=yield
+    
+      #footer 
+        %div 2009 (c) Epochwolf 
+        %div This website is an alpha test. All incompatible accounts and submissions are deleted when the code is updated.
+    #fullscreen
+    /#page_generated_at{:style => "display: block;"}=DateTime.now.utc.strftime("%F %T %Z")

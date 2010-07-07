@@ -1,0 +1,19 @@
+-title "#{h @user.name} - Profile"
+-nav "Users"
+=render :partial => "nav", :locals => {:page => "Profile"}
+.user
+  %p.last_visited
+    %strong Last Visited
+    =dt @user.last_visited_at, :format => "%b %d, %Y"
+  - if @user.website
+    .website=link_to h(@user.website), @user.website
+  -else
+    %p
+      %em This user doesn't have a website
+  -if @user.biography
+    .biography.rich=rich @user.biography
+  -else
+    %p
+      %em This user doesn't have a biography
+
+

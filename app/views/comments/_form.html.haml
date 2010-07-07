@@ -1,0 +1,19 @@
+-#
+  required: thread
+  optional: comment
+-parent ||= nil
+-return_uri ||= params[:return_uri]
+-comment ||= thread.comments.build
+
+.comment-form
+  -if thread.locked?
+    %p Thread locked, can't post new comments.
+  -elsif parent.try(:deleted_at)
+    %p Parent deleted, can't post new comments.
+  -else
+    -form_for(comment,:url => comment_thread_comments_path(thread)) do |f|
+      .rich-text-field=f.text_area :contents, :rows => 8, :class => "rich"
+      =hidden_field_tag("parent", parent.id) if parent
+      =return_to_here(return_uri)
+      .submit
+        =f.submit "Post Comment"

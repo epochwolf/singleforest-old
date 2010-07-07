@@ -1,0 +1,11 @@
+-control_box "Other Options" do
+  =link_to "Delete", [@user, @collection], :method => :delete, :confirm => "Are you sure you want to delete this collection?"
+-semantic_form_for @collection, :url => [@user, @collection] do |f|
+  -f.inputs do
+    =f.input :title
+    =f.input :description, :as => :rich, :hint => rich_hint
+    =f.input :series, :hint => "Stories appearing in this collection form a novel or series of chapters."
+  -f.buttons do 
+    =f.commit_button "Submit"
+    =link_to "Cancel", collections_account_path
+      

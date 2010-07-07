@@ -1,0 +1,9 @@
+- title "Editing Tag: #{h @tag.name}"
+- nav "Tags"
+
+%h1 Editing Tag
+-control_box "Controls", :rank => 99 do
+  %ul
+    %li=link_to "Destroy", @tag, :confirm => 'Are you sure?', :method => :delete
+
+= render :partial => 'form'

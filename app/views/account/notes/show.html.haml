@@ -1,0 +1,27 @@
+- title "Note"
+
+%p
+  %strong To:
+  =h @note.to_id
+%p
+  %strong From:
+  =h @note.from_id
+%p
+  %strong Title:
+  =h @note.title
+%p
+  %strong Contents:
+  =h @note.contents
+%p
+  %strong Read:
+  =h @note.read
+%p
+  %strong Flagged:
+  =h @note.flagged
+
+%p
+  = link_to "Edit", edit_note_path(@note)
+  |
+  = link_to "Destroy", @note, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", notes_path

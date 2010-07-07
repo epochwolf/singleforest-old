@@ -1,0 +1,12 @@
+- title "Page - #{@page.title}"
+-nav "Pages"
+
+.subnav.contain
+  %h1.left=h @page.title
+  .right
+    #{@page.hidden? ? "(Hidden) " : ""}
+    =link_to "View Source", page_path(@page, :format => "txt")
+    =link_to "Edit", edit_page_path(@page) if rank? :admin
+.rich
+  =rich @page.contents
+

@@ -1,0 +1,15 @@
+- title "#{@user.name}'s Collections - #{h @collection.title}"
+
+=render :partial => "user_pages/nav", :locals =>{:page => "Collections", }
+%h1.title 
+  #{h @collection.title}
+  -control :user => @user do
+    =link_to "Edit", edit_user_collection_path(@user, @collection)
+.content.rich=rich @collection.description 
+
+-if @collection.series?
+  %p Series
+-else
+  %p Plain Collection'
+  
+=render :partial => "literatures/index", :locals => {:hide => [:user, :collection], :literatures => @collection.literatures.visible.paginate(:page => params[:page], :include => :_user)}

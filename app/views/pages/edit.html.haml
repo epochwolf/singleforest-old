@@ -1,0 +1,6 @@
+- title "Editing Page - #{h @page.title}"
+-nav "Pages"
+
+-control_box "Controls", :rank => 99 do
+  =link_to "Destroy", @page, :confirm => 'Are you sure?', :method => :delete
+= render :partial => 'form'

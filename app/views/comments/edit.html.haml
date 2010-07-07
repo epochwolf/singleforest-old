@@ -1,0 +1,26 @@
+- title "Delete Comment ##{@comment.id}"
+- comment_thread = @comment.comment_thread
+%h2 Delete Comment
+.comments
+  .comment
+    .comment-header
+      #{"##{@comment.id}"} by:
+      %span.user=user_link @comment
+      %span.date=dt @comment.created_at
+      \/
+      %span.link=link_to "link",  [comment_thread, @comment]
+      -if @comment.parent_id
+        \/
+        %span.link=link_to "parent",  [comment_thread, @comment.parent]
+      -else
+        \/
+        %span.link=link_to "parent", comment_thread
+      .rich=sf @comment.contents
+
+  .comment-form
+    -form_for(@comment,:url => comment_thread_comment_path(comment_thread, @comment)) do |f|
+      =f.check_box :deleted
+      =f.label :deleted
+      =f.text_area :admin_note, :as => :rich, :rows => 5, :hint => sf_hint
+      .submit
+        =f.submit "Update"

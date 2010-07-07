@@ -1,0 +1,12 @@
+-title "Account - Change Email"
+.subnav
+  =link_to "Back to Dashboard", account_path
+  
+%h1.title Change Email
+-semantic_form_for @user, :url => account_url do |f|
+  -f.inputs do
+    =f.input :email, :hint => "We recommend you provide an email address so we can contact you if there are problems with your account."
+    =hidden_field_tag "form", "email"
+  -f.buttons do
+    =f.commit_button "Update"
+    =link_to "Cancel", account_url

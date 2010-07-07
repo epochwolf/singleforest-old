@@ -1,0 +1,7 @@
+- semantic_form_for(@tag) do |f|
+  -f.inputs do
+    =f.input :name, :hint => "Must be lowercase"
+    =f.input :description, :as => :rich
+  -f.buttons do
+    =f.commit_button
+    =link_to "Cancel", @tag

@@ -1,0 +1,47 @@
+td .literature_series_title {
+  font-style: italic; }
+
+
+#literature_tags_input li {
+  width: 10em;
+  float: left; }
+
+
+.tag-single .top {
+  margin-bottom: 2em; }
+
+.tag-single .body h2 {
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid black; }
+
+
+.literature-single {
+  width: 35em;
+  margin: auto; }
+
+.literature-single .header {
+  margin: 0 0 1em 0;
+  text-align: center; }
+.literature-single .header h1 {
+  font-size: 120%; }
+.literature-single .details {
+  border: 1px solid black; }
+.literature-single .details .literature_artists_note {
+  padding: 0 .5em; }
+.literature-single .details .bottom {
+  border-top: 1px solid black;
+  background: #ddd;
+  overflow: hidden; }
+.literature-single .details .bottom span {
+  float: left;
+  text-align: center;
+  width: 33%; }
+.literature-single .details .bottom span.literature_updated_at {
+  width: 34%;
+  background: #eee; }
+.literature-single .contents {
+  margin: 1em 0;
+  padding: .3em 0;
+  border-width: 1px 0;
+  border-color: black;
+  border-style: solid; }

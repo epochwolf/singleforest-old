@@ -1,0 +1,11 @@
+one:
+  title: MyString
+  summary: MyText
+  description: MyText
+  toplevel: MyString
+
+two:
+  title: MyString
+  summary: MyText
+  description: MyText
+  toplevel: MyString

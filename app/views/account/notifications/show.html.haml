@@ -1,0 +1,24 @@
+- title "Notification"
+
+%p
+  %strong User:
+  =h @notification.user_id
+%p
+  %strong Object Type:
+  =h @notification.object_type
+%p
+  %strong Object:
+  =h @notification.object_id
+%p
+  %strong Action:
+  =h @notification.action
+%p
+  %strong Object Owner:
+  =h @notification.object_owner_id
+
+%p
+  = link_to "Edit", edit_notification_path(@notification)
+  |
+  = link_to "Destroy", @notification, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", notifications_path

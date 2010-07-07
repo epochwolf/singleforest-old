@@ -1,0 +1,15 @@
+- title "Scratchpads"
+.subnav
+  =link_to "Back to Dashboard", account_path
+%h1.title Your Scratchpads  
+%p=link_to "New Scratchpad", new_user_scratchpad_path(@user)
+%table.default.paged
+  %tr
+    %th Title
+    %th Collection
+  - for scratchpad in @scratchpads
+    %tr
+      %td= link_to h(scratchpad.title), [@user, scratchpad]
+      %td= h(scratchpad.collection_id ? scratchpad.collection.title : "(None)")
+      %td=link_to "Edit", edit_user_scratchpad_path(current_user, scratchpad)
+=paginate(@scratchpads)

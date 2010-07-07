@@ -1,0 +1,21 @@
+:ruby
+  object ||= nil
+  target ||=rand(32000)
+  link_id = "flag_link_#{target}"
+  div_id = "flag_div_#{target}"
+  js_func = "open_close_popup(\"##{link_id}\", \"##{div_id}\")"
+  
+%span.js-popup-container  
+  =link_to_function("Flag", js_func, :id => link_id)
+  %div{:id => div_id, :style => "display: block;", :class => "js-popup"}
+    %h2.title Flag 
+    %ul
+      %li=object.class.name
+      %li=object.object_id
+    - form_tag(url_for(), :method => :post) do
+      %div
+        =hidden_field_tag("flag_object_type", object.class.name)
+        =hidden_field_tag("flag_object_id", object.object_id)
+        =text_area_tag("flag_message", nil, :rows => 4, :cols => 50)
+      =submit_tag("Flag")
+      =link_to_function("Cancel",  js_func)

@@ -1,0 +1,4 @@
+- title "Comment ##{@comment.id}"
+.comments
+  =render :partial => "comments/show", :locals=>{:comment => @comment, :show_reason => true, :show_parent => true, :lvl => @comment.level}
+  =render :partial => "comments/index", :locals => {:comments => @comment.descendants}

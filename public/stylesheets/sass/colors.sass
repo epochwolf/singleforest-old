@@ -1,0 +1,113 @@
+//Blues
+//http://www.colourlovers.com/color/5F7F96/Be_Good
+//http://www.colourlovers.com/color/F0F0D8/aglet
+//http://www.colourlovers.com/color/304E56/lost_war
+
+//header and footers
+!nav_background = #5C504F 
+!nav_border = #5C504F + #2B2830 
+!nav_text = #F0F8FE
+//background
+!site_background = #2B2830  
+!site_border = #ABAB8E
+//inside #site-content
+!content_background = #F0F0D8
+!content_accent = #D9D7A3
+!content_accent2 = #F0F0CA
+!content_links = #2B2830
+!content_links2 = #8B8870
+!content_text = #000
+
+
+body
+  color= !content_text
+  background-color: #000000
+
+a
+  color= !content_links
+
+*:focus
+  outline= "auto -webkit-focus-ring-color"
+  
+textarea.rich:focus
+  outline: none
+
+.controls
+  border= "1px solid" + !site_border
+
+.controls > .top
+  background= !content_accent2
+  border-bottom= "1px solid" + !site_border
+
+#header
+  background-color= !nav_background
+  color= !nav_text
+
+#header .login-info a
+  color= !nav_text
+
+#navigation ul
+  background-color= !site_background
+  color= !nav_text
+  border-color= !nav_border 
+  
+#navigation ul li a
+  background-color= !nav_background
+  color= !nav_text
+  border-color= !nav_border 
+  
+#navigation ul li a:hover
+  background-color= !nav_background
+  color= !nav_text
+
+#outer-wrapper
+  background-color= !site_background
+  
+#site-content
+  border= "2px solid " + !site_border
+  background-color= !content_background
+  
+  .subnav
+    border-bottom= "2px solid " + !content_accent
+  .wmd-preview 
+    background-color: #F4F4E8
+    
+  .article
+    .details
+      border= "2px solid" + !content_accent
+    .contents
+      .top
+        border-color= !content_accent
+        color= !content_links2
+      .top > a
+        color= !content_links2
+      .bottom
+        border-color= !content_accent
+        color= !content_links2
+        a
+          color= !content_links2
+
+div.js-popup
+  background-color= !nav_background
+  border-color= !nav_border
+  color= !nav_text
+  
+#site-content div.js-popup > form > span > a
+  color= !nav_text
+  
+#footer
+  background-color= !nav_background
+  color= !nav_text
+  border-color= !nav_border
+  
+//tables
+
+table.default
+  th  
+    border-bottom= "2px solid " + !content_accent
+  tr.odd
+    background-color= !content_accent2  
+  tr.even
+    background-color= !content_background
+div.paginate
+  border-top= "2px solid " + !content_accent

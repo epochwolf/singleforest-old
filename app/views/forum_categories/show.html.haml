@@ -1,0 +1,22 @@
+- title "Forums - #{@forum_category.forum.title} - #{h(@forum_category.title)}"
+-nav "Forums"
+.forums
+  %h1.title #{@forum_category.forum.title} - #{h(@forum_category.title)}
+  - control_box "Controls", :rank => 99 do
+    = link_to 'Edit', edit_forum_category_path(@forum_category)
+  .rich=h @forum_category.summary
+  %table.default.paged
+    %tr
+      %th Title
+      %th User
+      %th Last Bumped
+    - for forum_thread in @threads
+      %tr{:class => cycle("odd", "even", :name => :even_odd)}
+        %td.title= link_to h(forum_thread.title), [@forum_category, forum_thread]
+        %td.user= user_link forum_thread.user
+        %td.bumped_at=dt forum_thread.bumped_at
+        -if current_user.try(:rank) == 99
+          %td.sunk_deleted= sunk_deleted_text forum_thread
+  =paginate @threads
+
+  %p= link_to "New Thread", [:new, @forum_category, :forum_thread]

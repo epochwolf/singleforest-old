@@ -1,0 +1,4 @@
+-title "All Literature"
+.subnav
+  %h1 All Literature
+=render :partial => "literatures/index", :locals => {:literatures => @literatures, :empty => raw("There has been no literature posted to the site yet. Perhaps you would like to sign up and be the first to submit?")}

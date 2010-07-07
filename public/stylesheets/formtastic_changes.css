@@ -1,0 +1,39 @@
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset ol li p.inline-hints { color:#333; }
+
+--------------------------------------------------------------------------------------------------*/
+form.formtastic{
+	max-width: 700px;
+}
+
+form.formtastic > fieldset > ol > li p.inline-hints {
+	font-style: italic;
+	font-size: 14px;
+	clear: both;
+}
+
+form.formtastic fieldset > legend{
+	font-weight: bold;
+}
+
+form.formtastic fieldset > legend >label{
+	font-weight: normal;
+}
+
+form.formtastic .error label{
+	font-weight: bold;
+	color: red;
+}
+
+/* WMD Editor */
+form.formtastic > fieldset > ol > p {
+	padding: 1em;
+}
+form.formtastic > fieldset > ol > li.rich textarea { width: 100%; }
+form.formtastic > fieldset > ol > li.rich div.rich-text-field { display: inline-block; width: 74%; }

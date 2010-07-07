@@ -1,0 +1,12 @@
+-title "Account - Masquerade"
+.subnav
+  =link_to "Back to Dashboard", account_path
+%h1.title Masquerading
+%p 
+  This tool allows you to browse Singleforest.com as another user. 
+  You won't be able to modify the user's account but you can see anything they can see.
+  
+-form_tag(masquerade_path, :method =>:post) do
+  =label_tag("user_id", "User's ID")
+  =text_field_tag("user_id")
+  =submit_tag("Switch")

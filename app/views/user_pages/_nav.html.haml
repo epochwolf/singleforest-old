@@ -1,0 +1,24 @@
+-# Required: page
+-@secondary_navigation_page = page
+:ruby
+  def page_link(label, url)
+    link_to(label, url, :class => (@secondary_navigation_page == label ? "current_page" : ""))
+  end
+.subnav.contain
+  .left
+    %h2{:style => "display:inline;"}= @user.rank_symbol+ " " + @user.name
+    \/
+    =page_link "Profile", user_path(@user)
+    |
+    =page_link "Collections", collections_user_path(@user)
+    |
+    =page_link "Literature", literature_user_path(@user)
+    /Scratchpad
+    |
+    =page_link "Statistics", statistics_user_path(@user)
+  .right
+    -if current_user && @user != current_user
+      -# TODO: Change these links
+      =link_to "watch", nil
+      |
+      =link_to "flag", nil

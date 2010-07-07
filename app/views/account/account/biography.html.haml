@@ -1,0 +1,15 @@
+-title "Account - Editing Biography"
+
+.subnav
+  =link_to "Back to Dashboard", account_path 
+   
+%h1.title Editing User Page
+%p These items appear on your user page. You are welcome to leave them blank.
+-semantic_form_for @user, :url => account_url do |f|
+  -f.inputs do
+    =f.input :website, :hint => "Must start with http://", :label => "Blog"
+    =f.input :biography, :as => :rich
+    =hidden_field_tag "form", "biography"
+  -f.buttons do
+    =f.commit_button "Update"
+    =link_to "Cancel", account_url

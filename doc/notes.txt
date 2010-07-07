@@ -1,0 +1,2 @@
+Run this in script/console to view outputted queries
+ActiveRecord::Base.logger = Logger.new(STDOUT)

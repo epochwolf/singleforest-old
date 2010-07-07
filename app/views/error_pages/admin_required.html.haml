@@ -1,0 +1,8 @@
+%h1 Administrators Only
+
+%p
+  -if flash[:alert]
+    =flash[:alert]
+  -else  
+    The page you were trying to access is only for administrators.
+    

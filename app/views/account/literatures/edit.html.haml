@@ -1,0 +1,11 @@
+- title "Edit Lit - #{h @literature.title}"
+-nav "Account"
+
+-control_box("Controls", :rank => 99, :user_id => @literature.user_id) do 
+  .literature_deleted_at
+    Deleted:
+    =b @literature.soft_delete
+    %ul
+      %li=link_to "Destroy", account_literature_path(@literature), :confirm => 'Are you sure?', :method => :delete
+
+= render :partial => 'form'

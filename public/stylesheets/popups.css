@@ -1,0 +1,14 @@
+span.js-popup-container {
+  position: relative;
+  display: inline; }
+  span.js-popup-container div.js-popup {
+    position: absolute;
+    top: 0;
+    width: auto;
+    z-index: 999; }
+  span.js-popup-container div.js-popup.abs-left {
+    left: 0;
+    text-align: left; }
+  span.js-popup-container div.js-popup.abs-right {
+    right: 0;
+    text-align: right; }

@@ -1,0 +1,81 @@
+- semantic_form_for(@literature, :url => [:account, @literature]) do |f|
+  -f.inputs :name => "Bare minimum", :id => "basic" do
+    %p If you want to can just paste your submission in the contents and be submit the form.
+    =f.input :title, :hint => (@literature.new_record? ? "If you leave this blank it will be filled with the current date." : nil), :required => !@literature.new_record?
+    =f.input :contents, :as => :rich
+    -#Step 2
+  -f.inputs :name => "Listing Information", :id => "basic" do
+    =f.input :summary, :label => 'Summary', :hint => "This is the text that appears in literature listings. This gives people an idea of what you submission is.<br/><span class=\"count\">200</span> characters remaining.<br/>" + h_hint, :input_html => { :rows => 5 }
+    =f.input :artists_note, :as => :rich, :label => 'Artist\'s Note', :hint => "This appears before the content", :input_html => { :rows => 5 }
+    =f.input :note_to_commenters, :as => :rich, :hint => "This is the text that appears before comments", :input_html => { :rows => 5 }
+    -#Step 3
+  -f.inputs :name => "Maturity Settings", :id => "maturity_settings" do
+    =f.input :mature, :hint => "Anything in the PG13/Rish ranges"
+    =f.input :mature_sex, :label => "Contains Sex", :hint => "Mentioning sex isn't enough to require this. Just remember porn is a bannable offense."
+    =f.input :mature_violence, :label => "Contains Violence", :hint => "Anything in the R range and above."
+  -f.inputs :name => "Organization", :id => "tags" do  
+    =f.input :tags, :label => "Tags", :as =>:check_boxes, :hint => "You are limited to 5 tags."
+    =f.input :collection, :label => "Collection", :as => :select, :collection => @literature.user.collections unless @literature.user.collections.empty?
+  -f.inputs :name => "Options", :id => "options" do 
+    =f.input :critique, :label => 'Request Critique', :hint => "This will submit this piece to the workshop for people to critique."
+    =f.input :draft, :label => 'Draft', :hint => "This submission is a draft piece that should only appear in your gallery and the workshop (if you request critique)"
+    =f.input :hide, :label => 'Hide', :hint => "Don't display this piece"
+    
+  :javascript
+    //USAGE: Make sure that mature is checked if one of the sub-options is. 
+    $("#literature_mature").change(function (){ deselect_checkboxes("#literature_mature_sex", "#literature_mature_violence"); });
+    $("#literature_mature_sex").change(function (){ select_checkboxes("#literature_mature"); });
+    $("#literature_mature_violence").change(function (){ select_checkboxes("#literature_mature"); });
+    
+    //USAGE: Show characters remaining for literature_summary_input
+    //Need a delayedObserver because the keypress method ignores backspace on safari
+    var max_summary_length = 200; //in characters
+    $("#literature_summary_input textarea").delayedObserver(0.1, function(){
+      $("#literature_summary_input span.count").html( max_summary_length - $("#literature_summary_input textarea").val().length  );
+    });
+    
+    //USAGE: This limited the form to only allow 5 tags to be checked (Double checked on the server.)
+    //This is a horrible hack but it works. 
+    var selected_tags = new Array();
+    var max_tags = 5;
+    
+    $(document).ready(function(){
+      $("#literature_tags_input input").each(function(index){
+        if($(this).attr("checked")){
+          add_tag($(this));
+        }
+      });
+    });
+    
+    function add_tag(jquery_object){
+      selected_tags.push(jquery_object);
+      if(selected_tags.length > max_tags){
+        var tag = selected_tags.shift();
+        tag.attr("checked", false);
+      }
+    }
+    function remove_tag(jquery_object){
+      for(i=0; i < selected_tags.length; i = i + 1){
+        if(selected_tags[i].attr("id") == jquery_object.attr("id")){
+          selected_tags.splice(i, 1);
+        }
+      }
+    }
+    $("#literature_tags_input > fieldset > ol").find("input").each(function(){
+      $(this).change(function(){ 
+        if($(this).attr("checked")){
+          add_tag($(this));
+        }else{
+          remove_tag($(this));
+        }
+        })
+    })
+    
+    //$("#literature_tags").change(function (){ update_count("#literature_tags", "#tag_count") };);
+  
+  -f.buttons do
+    =f.commit_button
+    -if @literature.new_record?
+      =link_to "Cancel", account_literatures_path
+    -else
+      =link_to "Cancel", account_literatures_path

@@ -1,0 +1,66 @@
+/* This section is for anything formatted with markdown */
+div.rich {
+  display: block; }
+  div.rich blockquote {
+    margin: 0 1.5em; }
+  div.rich pre {
+    font-family: monospace;
+    padding: 0.5em 0;
+    line-height: 120%; }
+  div.rich p {
+    padding: 0.5em 0;
+    line-height: 140%; }
+  div.rich b {
+    font-weight: bold; }
+  div.rich code {
+    font-family: monospace; }
+  div.rich em {
+    font-style: italic; }
+  div.rich i {
+    font-style: italic; }
+  div.rich small {
+    font-size: 80%; }
+  div.rich strong {
+    font-weight: bold; }
+  div.rich tt {
+    font-family: monospace; }
+  div.rich u {
+    text-decoration: underline; }
+  div.rich h1 {
+    margin: 0.67em 0px; }
+  div.rich h2 {
+    margin: 0.67em 0px; }
+  div.rich h3 {
+    margin: 0.67em 0px; }
+  div.rich dl {
+    margin: 1em 0; }
+  div.rich dt {
+    margin-bottom: 0.5em; }
+  div.rich dd {
+    margin: 0.5em 0;
+    margin-left: 2em;
+    line-height: 140%; }
+  div.rich ul {
+    list-style: disc outside none;
+    padding-left: 1.5em; }
+  div.rich ol {
+    list-style: decimal outside none;
+    padding-left: 1.5em; }
+  div.rich li {
+    display: list-item;
+    line-height: 140%; }
+  div.rich cite {
+    color: #666;
+    font-style: italic;
+    font-size: 80%; }
+  div.rich em {
+    font-style: italic; }
+  div.rich strong {
+    font-weight: bold; }
+
+/* form.formtastic fieldset ol li fieldset { position:relative; }
+ * form.formtastic fieldset ol li fieldset legend { position:absolute; width:25%; padding-top:0.1em; }
+ * form.formtastic fieldset ol li fieldset legend span { position:absolute; }
+ * form.formtastic fieldset ol li fieldset legend.label label { position:absolute; }
+ * form.formtastic fieldset ol li fieldset ol { float:left; width:74%; margin:0; padding:0 0 0 25%; }
+ * form.formtastic fieldset ol li fieldset ol li { padding:0; border:0; } */

@@ -1,0 +1,12 @@
+- title "Forums - #{@category.forum.title} - #{h(@category.title)} - New Thread"
+.forums
+  .nav #{link_to @category.forum.title, forums_path} > #{link_to h(@category.title), @category } > New Thread
+  
+  %p Post in #{@category.title}
+  - semantic_form_for [@category, @forum_thread] do |f|
+    -f.inputs "" do 
+      =f.input :title
+      =f.input :content, :hint => rich_hint()
+    -f.buttons do 
+      =f.commit_button "Submit"
+      = link_to "Cancel", forum_category_path(@category)

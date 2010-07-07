@@ -1,0 +1,7 @@
+User Model
+==========
+name
+email
+openid_url
+rank
+confirmed

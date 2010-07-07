@@ -1,0 +1,5 @@
+- title "Forums - #{@forum_category.forum.title} - New Category"
+.forums
+  .nav #{link_to @forum_category.forum.title, forums_path} > New Category
+
+  = render :partial => 'form'

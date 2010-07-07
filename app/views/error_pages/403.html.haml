@@ -1,0 +1,8 @@
+.access-denied
+  %h1 Permission Error
+
+  %p You don't have permission to access the current page.
+  -if flash[:alert]
+    %p=h flash[:alert] 
+    
+    

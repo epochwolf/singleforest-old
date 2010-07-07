@@ -1,0 +1,5 @@
+-#required: comment_thread
+.comments
+  -if rank? :user
+    =render :partial => "comments/form", :locals => {:thread => comment_thread}
+  =render :partial => "comments/index", :locals => {:comments => comment_thread.comments.all, :show_parent => false}

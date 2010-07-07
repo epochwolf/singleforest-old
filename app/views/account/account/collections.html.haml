@@ -1,0 +1,17 @@
+- title "Account - Collections"
+.subnav
+  =link_to "Back to Dashboard", account_path
+%h1.title Your Collections
+%p=link_to "New Collection", new_user_collection_path(@user)
+%table.default
+  %tr
+    %th Title
+    %th Series?
+    %th Created?
+    %th Literature Count
+  - for collection in @collections
+    %tr{:class=>cycle(:odd, :even)}
+      %td=link_to h(collection.title), user_collection_path(current_user, collection)
+      %td=b collection.series?
+      %td=dt collection.created_at
+      %td=link_to "Edit", edit_user_collection_path(current_user, collection)

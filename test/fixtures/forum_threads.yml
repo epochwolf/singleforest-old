@@ -1,0 +1,17 @@
+one:
+  title: MyString
+  content: MyText
+  forum_catergory_id: 1
+  user_id: 1
+  sunk_at: 2010-01-20 19:14:47
+  deleted_at: 2010-01-20 19:14:47
+  admin_note: MyText
+
+two:
+  title: MyString
+  content: MyText
+  forum_catergory_id: 1
+  user_id: 1
+  sunk_at: 2010-01-20 19:14:47
+  deleted_at: 2010-01-20 19:14:47
+  admin_note: MyText

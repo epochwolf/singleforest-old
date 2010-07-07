@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  email: MyString
+  openid_url: MyString
+  rank: 1
+  confirmed: false
+
+two:
+  name: MyString
+  email: MyString
+  openid_url: MyString
+  rank: 1
+  confirmed: false

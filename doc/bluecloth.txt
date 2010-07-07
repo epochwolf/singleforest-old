@@ -1,0 +1,41 @@
+Disable links in markdown. This will ignore the link syntax and break a tags in an unsafe manner. Recommend using a sanitizer instead.
+:remove_links => false, 
+
+Disable images in markdown. This will ignore the link syntax and break image tags in an unsafe manner. Recommend using a sanitizer instead. 
+:remove_images => false, 
+
+Enable smartypants
+:smartypants => true, 
+
+Allow url syntax to create named anchors using id: and styled span tags using class:
+:pseudoprotocols => false, 
+
+Enable Discount extension named "pandoc_headers
+:pandoc_headers => false, 
+
+		it "correctly applies the :pandoc_headers option" do
+			input = "% title\n% author1, author2\n% date\n\nStuff."
+
+			bc = BlueCloth.new( input, :pandoc_headers => true )
+			bc.header.should == {
+				:title => 'title',
+				:author => 'author1, author2',
+				:date => 'date'
+			}
+			bc.to_html.should == '<p>Stuff.</p>'
+		end
+
+Auto generate ids for h tags. (Could produce invalid html!)
+:header_labels => false,
+
+
+:escape_html => false, 
+
+When on, use intraword emphasis, when off, disable intraword emphasis. 
+:strict_mode => true, 
+
+Convert urls to clickable links
+:auto_links => false, 
+
+Only allow links with urls that have recognized protocols. 
+:safe_links => false,

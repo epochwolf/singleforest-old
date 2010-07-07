@@ -1,0 +1,31 @@
+- title "Account - New Lit"
+.subnav
+  =link_to "Back to Dashboard", account_path
+%h1.title New Literature (Step 3 of 3)
+- semantic_form_for(@literature) do |f|
+  -f.inputs :name => "Maturity Settings", :id => "maturity_settings" do
+    =f.input :mature, :hint => "Anything in the PG13/Rish ranges"
+    =f.input :mature_sex, :label => "Contains Sex", :hint => "Mentioning sex isn't enough to require this. Just remember porn is a bannable offense."
+    =f.input :mature_violence, :label => "Contains Violence", :hint => "Anything in the R range and above."
+  -f.inputs :name => "Organization", :id => "tags" do  
+    =f.input :tags, :label => "Tags", :as =>:check_boxes, :hint => "You are limited to 5 tags."
+    =f.input :collection, :label => "Collection", :as => :select, :collection => @literature.user.collections unless @literature.user.collections.empty?
+  -f.inputs :name => "Options", :id => "options" do 
+    =f.input :critique, :label => 'Request Critique', :hint => "This will submit this piece to the workshop for people to critique."
+    =f.input :draft, :label => 'Draft', :hint => "This submission is a draft piece that should only appear in your gallery and the workshop (if you request critique)"
+    =f.input :hide, :label => 'Hide', :hint => "Don't display this piece even if Draft and Request Critique are selected"
+  %span{:style => "display:none;"}
+    =f.input :title, :as => :hidden
+    =f.input :summary, :as => :hidden
+    =f.input :contents, :as => :hidden
+    
+  -f.inputs :name => "Options", :id => "options" do 
+    =#f.input :hidden, :label => 'Hidden', :hint => "Hides this piece from everyone but yourself and administrators."
+  
+  
+  -f.buttons do
+    =f.commit_button
+    -if @literature.new_record?
+      =link_to "Cancel", account_path
+    -else
+      =link_to "Cancel", literature_path(@literature)

@@ -1,0 +1,14 @@
+- empty ||= raw("No scratchpads to display")
+
+-if scratchpads.nil? || scratchpads.empty?
+  %p.error=empty
+-else
+  %table.default.paged
+    %tr
+      %th Title
+      %th Collection
+    - for scratchpad in scratchpads
+      %tr
+        %td= link_to h(scratchpad.title), [scratchpad.user, scratchpad]
+        %td= h(scratchpad.collection_id ? scratchpad.collection.title : "(None)")
+  =paginate(scratchpads)

@@ -1,0 +1,28 @@
+- form_for @note do |f|
+  = f.error_messages
+  %p
+    = f.label :to_id
+    %br
+    = f.text_field :to_id
+  %p
+    = f.label :from_id
+    %br
+    = f.text_field :from_id
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+  %p
+    = f.label :contents
+    %br
+    = f.text_area :contents
+  %p
+    = f.label :read
+    %br
+    = f.check_box :read
+  %p
+    = f.label :flagged
+    %br
+    = f.check_box :flagged
+  %p
+    = f.submit "Submit"

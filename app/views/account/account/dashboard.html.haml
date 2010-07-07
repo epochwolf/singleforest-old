@@ -1,0 +1,29 @@
+-title "Account - Dashboard"
+
+%h1.title Dashboard
+%ul.indent
+  %li Rank: #{rank_text @user.rank}
+  %li Website: #{link_to h(@user.website), @user.website}
+  - if @user.closed?
+    %li Your account is closed
+
+%h2.heading Content
+%ul.indent
+  %li=link_to "Your Literature", account_literatures_path
+  %li=link_to "Your Collections", account_collections_path
+
+%h2.heading Other users
+%ul.indent
+  %li=link_to "Watch list", url_for()
+  %li=link_to "Viewed Literature", viewed_literature_account_path
+
+%h2.heading Settings
+%ul.indent
+  %li=link_to "Edit my User Page", user_page_account_path
+  %li=link_to "Change my email", email_account_path
+  %li=link_to "Change my login provider", openid_account_path
+  %li=link_to "Close my account", close_account_path
+  
+%h2.heading Admin
+%ul.indent
+  %li=link_to "Masquerade", masquerade_path

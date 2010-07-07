@@ -1,0 +1,4 @@
+-title "#{h @user.name} - Literature"
+-nav "Users"
+=render :partial => "nav", :locals => {:page => "Literature"}
+=render :partial => "literatures/index", :locals => {:literatures=>@literatures, :hide => [:user]}

@@ -1,0 +1,30 @@
+- title "Watch"
+
+%p
+  %strong Watcher:
+  =h @watch.watcher_id
+%p
+  %strong Watchee:
+  =h @watch.watchee_id
+%p
+  %strong Public:
+  =h @watch.public
+%p
+  %strong Collections:
+  =h @watch.collections
+%p
+  %strong Literature:
+  =h @watch.literature
+%p
+  %strong Scratchpads:
+  =h @watch.scratchpads
+%p
+  %strong Other:
+  =h @watch.other
+
+%p
+  = link_to "Edit", edit_watch_path(@watch)
+  |
+  = link_to "Destroy", @watch, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", watches_path

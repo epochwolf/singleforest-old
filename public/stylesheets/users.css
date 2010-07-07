@@ -1,0 +1,8 @@
+a.user.banned {
+  text-decoration: line-through; }
+
+a.user.closed {
+  text-decoration: line-through; }
+
+span.user-symbol {
+  font-size: 100%; }

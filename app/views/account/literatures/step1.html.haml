@@ -1,0 +1,15 @@
+- title "Account - New Lit"
+.subnav
+  =link_to "Back to Dashboard", account_path
+%h1.title New Literature (Step 1 of 3)
+%h2 Title and Content
+.rich 
+  %p #{link_to "Click here", new_literature_path} to view this as a single page.
+- semantic_form_for(@literature, :url => literature_step2_path) do |f|
+  -f.inputs :name => "", :id => "basic" do
+    =f.input :title, :value => DateTime.now
+    =f.input :contents, :as => :rich, :hint => rich_hint
+  -f.buttons do
+    =f.commit_button "Submit Now as Draft"
+    =f.commit_button "Next Step"
+    =link_to "Cancel", account_path 

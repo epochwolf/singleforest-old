@@ -1,0 +1,22 @@
+-title "Account - Change Login Provider"
+
+.subnav
+  =link_to "Back to Dashboard", account_path
+  
+%h1.title Change Login Provider
+-unless session[:openid] != @user.openid_url
+  %p To start the process of changing your current login provider to a different one, #{link_to "click here", login_path(:change_openid => "yes")}
+-else
+  %p 
+    To confirm you want to switch your login provider from 
+    %code=@old_url
+    to
+    %code=@new_url
+    click the confirm button below. 
+  -semantic_form_for @user, :url => account_url do |f|
+    -f.inputs do
+      =f.input :openid_url, :as => :hidden
+      =hidden_field_tag "form", "openid"
+    -f.buttons do
+      =f.commit_button "Confirm"
+      =link_to "Cancel", account_url

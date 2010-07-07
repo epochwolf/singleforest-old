@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  commentable_type: MyString
+  commentable_id: 1
+  rank_to_view: 1
+  rank_to_post: 1
+  locked: false
+
+two:
+  commentable_type: MyString
+  commentable_id: 1
+  rank_to_view: 1
+  rank_to_post: 1
+  locked: false

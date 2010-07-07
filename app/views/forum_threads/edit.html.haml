@@ -1,0 +1,19 @@
+- title "Forums - #{@category.forum.title} - #{h(@category.title)} - Editing Thread"
+.forums
+  .nav #{link_to @category.forum.title, forums_path} > #{link_to h(@category.title), @category } > Editing Thread
+  
+  -control_box "Other Options" do
+    =link_to("Hard Delete", [@category, @forum_thread], :confirm => 'Are you sure you?', :method => :delete)
+
+  - semantic_form_for [@category, @forum_thread] do |f|
+    -f.inputs do
+      =f.input :title
+      =f.input :category, :group_by => :forum
+      =f.input :content
+      =f.input :sunk, :hint => "Prevent new comments from bumping this thread"
+      =f.input :deleted, :hint => "Soft delete this thread."
+      =f.input :admin_note, :hint => "Required if this thread is sunk or deleted"
+      =f.input :bumped_at
+    -f.buttons do
+      =f.commit_button "Update"
+      = link_to "Cancel", [@category, @forum_thread]

@@ -1,0 +1,9 @@
+one:
+  title: MyString
+  description: MyText
+  series: false
+
+two:
+  title: MyString
+  description: MyText
+  series: false

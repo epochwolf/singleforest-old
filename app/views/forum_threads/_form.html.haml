@@ -1,0 +1,7 @@
+%p Post in #{@category.title}
+- semantic_form_for [@category, @forum_thread] do |f|
+  -f.inputs "" do 
+    =f.input :title
+    =f.input :content, :as => :rich, :hint => rich_hint
+  -f.buttons
+    =f.commit_button

@@ -1,0 +1,14 @@
+- semantic_form_for @forum_category do |f|
+  -f.inputs do 
+    =f.input :forum, :as => :select
+    =f.input :title
+    =f.input :summary, :as => :rich, :hint => rich_hint
+    /=f.input :description
+    =f.input :admin_only, :hint => "It's generally a bad idea to change this"
+    =f.input :news, :hint => "Only allow admins to post new threads to this category"
+    /=f.input :toplevel
+  -f.buttons do
+    =f.commit_button "Submit"
+    =link_to "Cancel", forums_path
+    
+=debug @forum_category

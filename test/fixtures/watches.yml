@@ -1,0 +1,17 @@
+one:
+  watcher_id: 1
+  watchee_id: 1
+  public: false
+  collections: false
+  literature: false
+  scratchpads: false
+  other: false
+
+two:
+  watcher_id: 1
+  watchee_id: 1
+  public: false
+  collections: false
+  literature: false
+  scratchpads: false
+  other: false

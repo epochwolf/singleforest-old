@@ -1,0 +1,11 @@
+one:
+  title: MyString
+  title_slug: MyString
+  contents: MyText
+  hidden: false
+
+two:
+  title: MyString
+  title_slug: MyString
+  contents: MyText
+  hidden: false

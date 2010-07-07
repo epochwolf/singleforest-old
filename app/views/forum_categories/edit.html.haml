@@ -1,0 +1,7 @@
+- title "Forums - #{@forum_category.forum.title} - Edit Category"
+.forums
+  .nav #{link_to @forum_category.forum.title, forums_path} > Edit Category
+  - control_box "Other Options" do 
+    = link_to 'Destroy', @forum_category, :confirm => 'Are you sure?', :method => :delete
+
+  = render :partial => 'form'

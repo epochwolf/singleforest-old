@@ -1,0 +1,1 @@
+Look into adding latex support later on

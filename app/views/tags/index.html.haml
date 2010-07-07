@@ -1,0 +1,15 @@
+- title "All Tags"
+-nav "Tags"
+%h1.title All Tags
+.tag-list
+  - for tag in @tags
+    .tag
+      %h2
+        #{link_to h( tag.name), tag}
+        %span.literature_count (#{tag.literature_count})
+
+      .creole= rich tag.description
+    
+
+-control :rank => 99 do
+  =link_to "New Tag", new_tag_path

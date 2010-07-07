@@ -1,0 +1,32 @@
+- form_for @watch do |f|
+  = f.error_messages
+  %p
+    = f.label :watcher_id
+    %br
+    = f.text_field :watcher_id
+  %p
+    = f.label :watchee_id
+    %br
+    = f.text_field :watchee_id
+  %p
+    = f.label :public
+    %br
+    = f.check_box :public
+  %p
+    = f.label :collections
+    %br
+    = f.check_box :collections
+  %p
+    = f.label :literature
+    %br
+    = f.check_box :literature
+  %p
+    = f.label :scratchpads
+    %br
+    = f.check_box :scratchpads
+  %p
+    = f.label :other
+    %br
+    = f.check_box :other
+  %p
+    = f.submit "Submit"

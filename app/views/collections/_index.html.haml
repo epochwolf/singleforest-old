@@ -1,0 +1,19 @@
+- empty ||= raw("No collections to display")
+
+-if collections.nil? || collections.empty?
+  %p.error=empty
+-else
+  %table.default.paged
+    %tr
+      %th Title
+      %th Series?
+      %th Literature
+
+    - for collection in collections
+      %tr
+        %td= link_to h(collection.title), [collection.user, collection]
+        %td=b collection.series
+        %td= collection.literatures_count
+        %td= collection.scratchpads_count
+  =paginate collections
+

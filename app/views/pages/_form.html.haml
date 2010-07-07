@@ -1,0 +1,12 @@
+- semantic_form_for(@page) do |f|
+  -f.inputs do
+    =f.input :title, :hint => "This will be used for the page's url"
+    =f.input :contents, :as => :rich
+    =f.input :hide, :hint => "Hiding the page prevents non-admins from seeing it."
+  -f.buttons do
+    =f.commit_button
+    -if @page.new_record?
+      =link_to "Cancel", pages_path
+    -else
+      =link_to "Cancel", page_path(@page)
+

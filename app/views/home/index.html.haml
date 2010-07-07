@@ -1,0 +1,22 @@
+- title "Home"
+-nav "Home"
+-if current_user
+  %h1.title Community Portal
+  %h2 Latest News
+  %p Not implemented
+  %h2 New Users
+  %p Not implemented
+  %h2 Links
+  %p Not implemented
+-else
+  .readable.rich
+    %h1 Singleforest.com
+    %p
+      Singleforest.com is an art community for fiction. Our website is minimal so it is readable and it loads fast even on slow connections because some people still use dailup. We don't host images, poetry, non-fiction prose, or pornography. There are other websites that do these things. 
+    %p
+      We don't hide mature content behind a filter. Fiction can be violent, disturbing, or sensual. Bookstores won't hide the fiction we allow behind a red curtain, so we won't either.
+    %p
+      If you enjoy reading or writing, we invite you to #{link_to "join our community", login_path}. We won't ask you for your password and you don't even have to provide us with an email if you don't want to. 
+      
+    %p
+      \- epochwolf (Singleforest.com administrator)

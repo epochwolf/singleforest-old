@@ -1,0 +1,25 @@
+- title "Watches"
+
+%table
+  %tr
+    %th Watcher
+    %th Watchee
+    %th Public
+    %th Collections
+    %th Literature
+    %th Scratchpads
+    %th Other
+  - for watch in @watches
+    %tr
+      %td= h watch.watcher_id
+      %td= h watch.watchee_id
+      %td= h watch.public
+      %td= h watch.collections
+      %td= h watch.literature
+      %td= h watch.scratchpads
+      %td= h watch.other
+      %td= link_to 'Show', watch
+      %td= link_to 'Edit', edit_watch_path(watch)
+      %td= link_to 'Destroy', watch, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Watch", new_watch_path

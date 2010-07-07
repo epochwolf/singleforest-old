@@ -1,0 +1,15 @@
+one:
+  to_id: 1
+  from_id: 1
+  title: MyString
+  contents: MyText
+  read: false
+  flagged: false
+
+two:
+  to_id: 1
+  from_id: 1
+  title: MyString
+  contents: MyText
+  read: false
+  flagged: false

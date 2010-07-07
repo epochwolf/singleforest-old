@@ -1,0 +1,31 @@
+-title "Account - Literature"
+.subnav
+  =link_to "Back to Dashboard", account_path
+  
+%h1.title Your Literature
+%p=link_to "Submit Literature", new_account_literature_path
+
+
+-if @literatures.nil? || @literatures.empty?
+  %p.error="You haven't submitted any literature yet. #{link_to "Get posting", new_aliterature_path}."
+-else
+  %table.default.paged
+    %tr
+      %th Title
+      %th Word count
+      %th Tags
+      %th Summary
+      %th Mature
+    - for literature in @literatures
+      %tr{:class => cycle('odd', 'even')}
+        %td
+          .literature_title= link_to h(literature.title), account_literature_path(literature)
+          -if literature.collection
+            .literature_series_title="#{(literature.collection.series ? "series" : "collection")}: " + link_to(h(literature.collection.title), [literature.user, literature.collection])
+        %td
+          .literature_word_count #{literature.word_count} words
+        %td
+          .literature_tags=tag_links(literature.tags)
+        %td= h literature.summary
+        %td= mature_text literature
+  =paginate @literatures

@@ -1,0 +1,23 @@
+one:
+  title: MyString
+  user_id: 1
+  word_count: 1
+  artists_note: MyText
+  content: MyText
+  summary: MyText
+  mature: false
+  mature_sex: false
+  mature_violence: false
+  deleted_at: 1
+
+two:
+  title: MyString
+  user_id: 1
+  word_count: 1
+  artists_note: MyText
+  content: MyText
+  summary: MyText
+  mature: false
+  mature_sex: false
+  mature_violence: false
+  deleted_at: 1

@@ -1,0 +1,32 @@
+- empty ||= raw("No literature to display")
+- hide = [] unless hide.kind_of? Array
+
+-if literatures.nil? || literatures.empty?
+  %p.error=empty
+-else
+  %table.default.paged
+    %tr
+      %th Title
+      -unless hide.include?(:user)
+        %th User/Word count
+      -else
+        %th Word count
+      %th Tags
+      %th Summary
+      %th Mature
+    - for literature in literatures
+      %tr{:class => cycle('odd', 'even')}
+        %td
+          .literature_title= link_to h(literature.title), literature
+          -if !hide.include?(:collection) && literature.collection
+            .literature_series_title="#{(literature.collection.series ? "series" : "collection")}: " + link_to(h(literature.collection.title), [literature.user, literature.collection])
+        %td
+          -unless hide.include?(:user)
+            .literature_user_name=user_link literature
+          .literature_word_count #{literature.word_count} words
+        %td
+          .literature_tags=tag_links(literature.tags)
+        %td= h literature.summary
+        %td= mature_text literature
+  =paginate literatures
+  

@@ -1,0 +1,24 @@
+- form_for @notification do |f|
+  = f.error_messages
+  %p
+    = f.label :user_id
+    %br
+    = f.text_field :user_id
+  %p
+    = f.label :object_type
+    %br
+    = f.text_field :object_type
+  %p
+    = f.label :object_id
+    %br
+    = f.text_field :object_id
+  %p
+    = f.label :action
+    %br
+    = f.text_field :action
+  %p
+    = f.label :object_owner_id
+    %br
+    = f.text_field :object_owner_id
+  %p
+    = f.submit "Submit"

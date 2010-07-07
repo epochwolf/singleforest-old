@@ -1,0 +1,16 @@
+/* This section is for anything formatted with creole */
+.creole p {
+  padding: 0.5em 0;
+  line-height: 140%; }
+.creole ul {
+  list-style-type: disc;
+  padding-left: 20px; }
+.creole ol {
+  list-style-type: decimal;
+  padding-left: 20px; }
+.creole li {
+  line-height: 130%; }
+.creole cite {
+  color: #666;
+  font-style: italic;
+  font-size: 80%; }

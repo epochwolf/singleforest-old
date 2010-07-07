@@ -1,0 +1,11 @@
+-#
+  required: comments
+- current_level ||= 0
+
+-Comment.each_with_level(comments) do |comment, actual_lvl|
+  -lvl = actual_lvl - current_level
+  -if lvl < 5
+    =render :partial => "comments/show", :locals => {:comment => comment, :lvl => lvl}
+  -else
+    .comments-continue
+      =link_to "more comments", [comment_thread, comment]

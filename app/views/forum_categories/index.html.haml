@@ -1,0 +1,20 @@
+- title "Forums"
+- nav "Forums"
+%h1.title Forums
+
+.forums
+  - for tl in @forums 
+    %h2.underline.heading=h tl.title
+    - for forum_category in tl.categories
+      %h3= link_to h(forum_category.title), forum_category
+      .rich= rich forum_category.summary
+      %table.default
+        -reset_cycle(:even_odd)
+        -for forum_thread in forum_category.top_threads
+          %tr{:class => cycle("odd", "even", :name => :even_odd)}
+            %td.title= link_to h(forum_thread.title), [forum_category, forum_thread]
+            %td.user= user_link forum_thread.user
+            %td.bumped_at=dt forum_thread.bumped_at
+    -control :rank => 99 do
+      = link_to "New Category", new_forum_category_path(:forum=>tl)
+

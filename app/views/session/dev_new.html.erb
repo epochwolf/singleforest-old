@@ -1,0 +1,7 @@
+<%= title "Secret Login" %>
+<form action="<%= url_for(:controller => "session", :action => "dev_new")%>" method="post" id="openid_form">
+  Select a user to login:
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+	<%= select_tag("username", options_for_select(User.all(:select => "name").collect{|u| u.name}) ) %>
+	<input id="openid_submit" type="submit" value="Login"/>
+</form>

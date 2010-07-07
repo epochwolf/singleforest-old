@@ -1,0 +1,6 @@
+<%= @page.title %> 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<%=raw word_wrap (@page.contents, :line_width => 80) %>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Source: <%= url_for(:only_path => false) %>
+Copyright 2009 Singleforest.com (and other authors as referenced)

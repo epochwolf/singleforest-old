@@ -1,0 +1,5 @@
+user_id:integer
+literature_id:integer
+vote:integer 1, 0, -1
+updated_at:datetime
+created_at:datetime

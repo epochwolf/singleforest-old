@@ -1,0 +1,17 @@
+- title "Tags - #{h @tag.name}"
+-nav "Tags"
+.subnav
+  =link_to "All Tags", tags_path
+
+
+%h1.title 
+  Tag: #{h @tag.name}
+  -control :rank => 99 do
+    =link_to "Edit", edit_tag_path(@tag)
+.tag-single
+  .top
+    .rich=rich @tag.description
+  .body
+    %h2 Literature in this tag
+    =partial "literatures/index", :literatures, @literatures
+

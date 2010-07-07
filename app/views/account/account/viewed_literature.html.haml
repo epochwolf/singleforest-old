@@ -1,0 +1,34 @@
+-title "Account - Viewed Literature"
+.subnav
+  =link_to "Back to Dashboard", account_path  
+  
+%h1.title Previously Viewed Literature  
+%p These are literature submissions you have viewed.
+.account.literature
+  %table.default.paged
+    %tr
+      %th Title
+      %th User/Word count
+      %th Tags
+      %th Summary
+      %th Misc
+      %th Enjoyed/Viewed
+    - for literature in @literatures
+      %tr{:class => cycle('odd', 'even')}
+        %td
+          .literature_title= link_to h(literature.title), literature
+          /-if @literature.part_of_series?
+          .literature_series_title Series Title
+        %td
+          .literature_user_name=user_link literature.user
+          .literature_word_count #{literature.word_count} words
+        %td
+          .literature_tags=tag_links(literature.tags)
+        %td= h literature.summary
+        %td= mature_text literature
+        %td
+          .vote= vote_text literature.vote
+          .viewed= dt DateTime.parse(literature.viewed_at)
+  =paginate @literatures
+-if @literatures.empty?
+  %p You haven't viewed any literature yet. #{link_to "Get reading", literatures_path}.

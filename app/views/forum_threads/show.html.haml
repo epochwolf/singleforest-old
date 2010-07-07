@@ -1,0 +1,21 @@
+- title "Forums - #{@category.forum.title} - #{h(@category.title)}"
+-nav "Forums"
+-control_box "Controls", :rank => 99 do
+  %ul
+    %li=link_to("Edit", [:edit, @category, @forum_thread])
+.article
+  %h1 
+  .header
+    .top
+      %span.thread_user=user_link @forum_thread
+      %span.thread_created_at=dt @forum_thread.bumped_at
+    %h1=h @forum_thread.title
+    .bottom
+      %span.thread_category In: #{link_to h(@category.forum.title + " - " + @category.title), @category }
+  .contents.rich=h @forum_thread.content
+  - if @forum_thread.sunk || @forum_thread.deleted
+    .details
+      %h3 Reason for #{sinking_deleting_text @forum_thread} this thread
+      .rich=h @forum_thread.admin_note
+      
+=render :partial => "comments/comments_for", :locals => {:comment_thread => @forum_thread.comment_thread}

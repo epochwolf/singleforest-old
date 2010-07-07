@@ -1,0 +1,8 @@
+- title "New Comment"
+
+%h1 New Comment
+.comments
+  =render :partial => "comments/show", :locals => {:comment => @parent, :lvl => @parent.level, :show_reply => false, :show_parent => true}
+  =render :partial => "comments/form", :locals => {:parent => @parent, :thread => @parent.comment_thread}
+  =render :partial => "comments/index", :locals => {:comments => @parent.descendants, :lvl => @parent.level}
+/=render :partial => "comments/index", :locals => {:comment => @parent , :children => false}

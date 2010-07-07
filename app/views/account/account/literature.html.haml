@@ -1,0 +1,7 @@
+-title "Account - Literature"
+.subnav
+  =link_to "Back to Dashboard", account_path
+  
+%h1.title Your Literature
+%p=link_to "Submit Literature", new_literature_path
+=render :partial => "literatures/index", :locals => {:literatures => @literatures, :empty => raw("You haven't submitted any literature yet. #{link_to "Get posting", new_literature_path}.")}

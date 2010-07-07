@@ -1,0 +1,38 @@
+- nesting_level ||= 0
+- nesting_level += 1
+- display_children ||= true
+.comment
+  -if comment.deleted_at
+    / .comment_options 
+    /   Comment deleted at
+    /   %span.date=dt comment.deleted_at
+    /   -if rank? :admin
+    /     \/
+    /     %span.delete=link_to "undelete", edit_comment_thread_comment_path(comment.comment_thread, comment, :return_uri => request.request_uri) 
+    / .deleted.rich=sf comment.admin_note
+    .comment_options 
+      [Deleted #{comment.deleted_at}] /
+      %span.link=link_to "reason",  comment_thread_comment_path(comment.comment_thread, comment)
+        
+  -else
+    .comment_options
+      #{"##{comment.id}"} by:
+      %span.user=user_link comment.user
+      %span.date=dt comment.created_at
+      \/
+      %span.link=link_to "link",  comment_thread_comment_path(comment.comment_thread, comment)
+      -if comment.parent_id
+        \/
+        %span.parent=link_to "parent", comment_thread_comment_path(comment.comment_thread, comment.parent_id) 
+      -if rank? :admin
+        \/
+        %span.delete=link_to "delete", edit_comment_thread_comment_path(comment.comment_thread, comment, :return_uri => request.request_uri) 
+    .rich=sf comment.contents
+    .reply=link_to "reply", new_comment_thread_comment_path(comment.comment_thread, :parent_id => comment.id, :return_uri => request.request_uri)
+-if display_children && !comment.children.blank?
+  %div{:class => ("nesting-level level-#{nesting_level}")}
+    -if nesting_level > 4
+      .comments-continue
+        =link_to "more comments", comment_thread_comment_path(comment.comment_thread, comment)
+    -else
+      =render :partial=>"comments/comment", :collection => comment.children, :locals => {:nesting_level => nesting_level}

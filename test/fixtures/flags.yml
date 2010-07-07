@@ -1,0 +1,11 @@
+one:
+  user_id: 1
+  message: MyText
+  flaggable_type: MyString
+  flaggable_id: 1
+
+two:
+  user_id: 1
+  message: MyText
+  flaggable_type: MyString
+  flaggable_id: 1

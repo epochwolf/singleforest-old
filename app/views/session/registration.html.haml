@@ -1,0 +1,30 @@
+- title "Register"
+%h1.title Choose your username
+.rich
+
+  -# need to override the method because the account is only half created
+  -form_for(@user, :url => registration_url(@user)) do |f|
+    =f.error_messages
+    %p
+      =f.label :name, "Name (required)"
+      =f.text_field :name
+      %ul
+        %li Must be between 4 and 20 characters in length
+        %li Only letters (A-Za-z), numbers (0-9), and hyphens (-) are allowed.
+    %p
+      =f.label :email, "Email (Optional)"
+      =f.text_field :email
+      %ul
+        %li We highly recommend providing an email address so we can contact you with problems with your account.
+    %p
+      Login Provider: 
+      =h(@user.openid_url)
+    %p
+      / I don't even bother to check if someone has actually read the ToS, nobody reads them. 
+      =check_box_tag("tos", 1, true)
+      =label_tag("tos", "I have not read the Terms of Service.")
+
+    %p If you didn't mean to create an account you can just close the window. It won't hurt anything.
+    = continue_redirect
+    =raw recaptcha_tags(:ssl => true, :ajax => true)
+    = f.submit 'Create Account'

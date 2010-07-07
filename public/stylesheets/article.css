@@ -1,0 +1,40 @@
+.article {
+  width: 35em;
+  margin: auto; }
+  .article .header.centered {
+    margin: 0 0 1em 0;
+    text-align: center; }
+    .article .header.centered h1 {
+      font-size: 120%; }
+  .article .details {
+    margin: 0.5em; }
+    .article .details .rich {
+      padding: 0 .5em; }
+  .article .contents {
+    padding: .3em 0; }
+    .article .contents .top {
+      height: 1em;
+      text-align: right;
+      border-style: solid;
+      border-width: 0 0 2px 0; }
+      .article .contents .top a {
+        text-decoration: none; }
+    .article .contents .bottom {
+      height: 1em;
+      text-align: right;
+      border-style: solid;
+      border-width: 2px 0 0 0; }
+      .article .contents .bottom a {
+        text-decoration: none; }
+
+div.collection {
+  float: right; }
+  div.collection ul.collection_listing {
+    list-style: disc inside none; }
+    div.collection ul.collection_listing li {
+      display: list-item; }
+    div.collection ul.collection_listing li.active {
+      font-style: italic; }
+
+div.collection.series ul.collection_listing {
+  list-style: decimal inside none; }
